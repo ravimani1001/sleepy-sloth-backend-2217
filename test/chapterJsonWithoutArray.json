@@ -1,0 +1,16 @@
+{
+    "subject": "Chemistry",
+    "class": "Class 11",
+    "unit": "Physical Chemistry",
+    "yearWiseQuestionCount": {
+      "2019": 5,
+      "2020": 2,
+      "2021": 7,
+      "2022": 3,
+      "2023": 4,
+      "2024": 5,
+      "2025": 2
+    },
+    "status": "In Progress",
+    "isWeakChapter": true
+  }

@@ -1,0 +1,177 @@
+
+[
+  {
+    "subject": "Physics",
+    "chapter": "Work Power Energy",
+    "class": "Class 11",
+    "yearWiseQuestionCount": {
+      "2019": 10,
+      "2020": 4,
+      "2021": 9,
+      "2022": 10,
+      "2023": 2,
+      "2024": 7,
+      "2025": 5
+    },
+    "questionSolved": 0,
+    "status": "Not Started",
+    "isWeakChapter": true
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Center of Mass Momentum and Collision",
+    "class": "Class 11",
+    "unit": "Mechanics 1",
+    "yearWiseQuestionCount": {
+      "2019": 7,
+      "2020": 5,
+      "2021": 2,
+      "2022": 7,
+      "2023": 6,
+      "2024": 10,
+      "2025": 0
+    },
+    "questionSolved": 0,
+    "status": "Not Started",
+    "isWeakChapter": true
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Rotational Motion",
+    "class": "Class 11",
+    "unit": "Mechanics 1",
+    "yearWiseQuestionCount": {
+      "2019": 9,
+      "2020": 9,
+      "2021": 9,
+      "2022": 9,
+      "2023": 9,
+      "2024": 2,
+      "2025": 5
+    },
+    "questionSolved": 52,
+    "isWeakChapter": true
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Gravitation",
+    "class": "Class 11",
+    "unit": "Mechanics 1",
+    "yearWiseQuestionCount": {
+      "2019": 3,
+      "2020": 4,
+      "2021": 5,
+      "2022": 9,
+      "2023": 0,
+      "2024": 6,
+      "2025": 8
+    },
+    "questionSolved": 35,
+    "status": "Completed",
+    "isWeakChapter": false
+  },
+  {
+    "subject": "Physics",
+    "chapter": "Mechanical Properties of Solids",
+    "class": "Class 11",
+    "unit": "Mechanics 2",
+    "yearWiseQuestionCount": {
+      "2019": 4,
+      "2020": 6,
+      "2021": 0,
+      "2022": 2,
+      "2023": 10,
+      "2024": 10,
+      "2025": 7
+    },
+    "status": "Not Started",
+    "isWeakChapter": false
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Chemical Bonding and Molecular Structure",
+    "class": "Class 11",
+    "yearWiseQuestionCount": {
+      "2019": 7,
+      "2020": 5,
+      "2021": 2,
+      "2022": 0,
+      "2023": 5,
+      "2024": 5,
+      "2025": 3
+    },
+    "questionSolved": 22,
+    "status": "In Progress",
+    "isWeakChapter": false
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "States of Matter",
+    "class": "Class 11",
+    "unit": "Physical Chemistry",
+    "yearWiseQuestionCount": {
+      "2019": 1,
+      "2020": 1,
+      "2021": 1,
+      "2022": 1,
+      "2023": 1,
+      "2024": 5,
+      "2025": 9
+    },
+    "questionSolved": 9,
+    "status": "In Progress",
+    "isWeakChapter": true
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Thermodynamics (C)",
+    "class": "Class 11",
+    "unit": "Physical Chemistry",
+    "yearWiseQuestionCount": {
+      "2019": 8,
+      "2020": 9,
+      "2021": 2,
+      "2022": 0,
+      "2023": 2,
+      "2024": 0,
+      "2025": 7
+    },
+    "questionSolved": 28,
+    "status": "Completed",
+    "isWeakChapter": false
+  },
+  {
+    "subject": "Chemistry",
+    "chapter": "Chemical Equilibrium",
+    "class": "Class 11",
+    "unit": "Physical Chemistry",
+    "yearWiseQuestionCount": {
+      "2019": 8,
+      "2020": 3,
+      "2021": 5,
+      "2022": 7,
+      "2023": 5,
+      "2024": 9,
+      "2025": 2
+    },
+    "questionSolved": 35,
+    "status": "In Progress",
+    "isWeakChapter": true
+  },
+  {
+    "subject": "Chemistry",
+    "class": "Class 11",
+    "unit": "Physical Chemistry",
+    "yearWiseQuestionCount": {
+      "2019": 5,
+      "2020": 2,
+      "2021": 7,
+      "2022": 3,
+      "2023": 4,
+      "2024": 5,
+      "2025": 2
+    },
+    "status": "In Progress",
+    "isWeakChapter": true
+  }
+]
