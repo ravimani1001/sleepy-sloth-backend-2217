@@ -51,7 +51,7 @@ The live API is deployed and available here:
 
 - `POST /signup` – User sign up  
 - `POST /login` – Login & get JWT cookie
-- `POST /logout` – Login & clear cookies  
+- `POST /logout` – Logout & clear cookies  
 
 ### Chapter Routes (`/api/v1/chapters`)
 
