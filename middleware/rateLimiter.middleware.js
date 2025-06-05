@@ -4,16 +4,13 @@ function rateLimiter(secondsWindow = 60, allowedHits = 30) {
   return async function (req, res, next) {
     try {
       const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-      console.log("GOT THE IP ADDRESS");
       const requests = await redis.incr(ip);
-      console.log("INC THR NO. REQUESTS");
       if (requests == 1) {
         await redis.expire(ip, secondsWindow);
       }
-      console.log("REQUESTS != 1");
       if (requests > allowedHits) {
         // Get TTL (time to live) left for this IP key in Redis
-        console.log("REQUESTS > ALLOWEDREQ");
+
         const ttl = await redis.ttl(ip);
 
         res.set("Retry-After", ttl); // seconds till reset
