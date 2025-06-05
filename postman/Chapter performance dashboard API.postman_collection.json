@@ -1,0 +1,661 @@
+{
+	"info": {
+		"_postman_id": "57052357-8267-4ed9-856a-7abd7bcd1aac",
+		"name": "Chapter performance dashboard API",
+		"description": "This Chapter performance dashboard API is a powerful and modular backend API built using **Node.js**, **Express**, **MongoDB**, and **Redis**. It allows secure management of chapter performance data including user authentication, admin-based chapter uploads, advanced filtering, Redis caching, and request rate limiting.\n\nLive Link - [Here](https://sleepy-sloth-backend-2217.onrender.com/api/v1/)\n\n**THE JSON FILES REQUIRED FOR TESTING ARE ALSO AVAILABLE ON GITHUB** -\n\nThis collection consists of the following folders -\n\n- **user auth** - consists of routes related to user sign up, login and logout.\n    \n- **admin auth** - consists of routes related to admin login and logout.\n    \n    - **NOTE** - Admin sign up is done manually. Admin credentials are added to database manually. You can **use the sample admin credentials for testing the admin** related routes -\n        \n    - { \"email\" : \"[admin@gmail.com](https://mailto:admin@gmail.com)\" , \"password\" : \"admin123\" }\n        \n- **chapter upload** - consists of 'Admin only' routes for uploading chapters.\n    \n- **get chapters** - consists of routes for getting list of chapters with filters, pagination or both.\n    \n\n## Sample Testing Flow\n\n1. Signup as user\n    \n2. Login to receive JWT\n    \n3. Logout as user\n    \n4. Use example Admin credentials provided above to login as admin\n    \n5. Upload chapter JSON file\n    \n6. Fetch chapters via filters and pagination\n    \n7. Exceed request limit to test rate limiter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37304514",
+		"_collection_link": "https://justme-6811.postman.co/workspace/e4a6a401-1c7d-4d9d-90f9-d915a0567b59/collection/37304514-57052357-8267-4ed9-856a-7abd7bcd1aac?action=share&source=collection_link&creator=37304514"
+	},
+	"item": [
+		{
+			"name": "user auth",
+			"item": [
+				{
+					"name": "userSignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"xyz\",\r\n    \"email\" : \"xyz@gmail.com\",\r\n    \"password\" : \"xyz123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/auth/signup",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/auth/logout",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"xyz@gmail.com\",\r\n    \"password\" : \"xyz123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Consists of the following routes -\n\n- POST /api/v1/auth/signup - Takes name, email and password in JSON body and registers users.\n    \n- POST /api/v1/auth/login - Takes email and password in JSON body and send cookies.\n    \n- POST /api/v1/auth/logout - Logouts user and clears cookies"
+		},
+		{
+			"name": "admin auth",
+			"item": [
+				{
+					"name": "adminLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@gmail.com\",\r\n    \"password\" : \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/auth/logout",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder consists of routes related with Admin login and logout.  \nAdmin is manually added to the database.\n\n**Therefore, for testing purpose, use credentials given below to login as admin.**\n\nemail : \"[admin@gmail.com](https://mailto:admin@gmail.com)\"\n\npassword : \"admin123\""
+		},
+		{
+			"name": "chapter upload",
+			"item": [
+				{
+					"name": "validChaptersUpload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "This file consists of all valid chapter data.",
+									"type": "file",
+									"src": "postman-cloud:///1f042356-0928-43c0-a574-108af024a40c"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fewInvalidChaptersUpload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "This file consists of few invalid chapter data.",
+									"type": "file",
+									"src": "postman-cloud:///1f042359-3eda-43d0-9f36-c5d1df07aec8"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder consists of route that is related to uploading the chapters using JSON files. Chapter uploading is **ONLY ALLOWED BY ADMIN** . So this route require the **ADMIN TO BE LOGGED IN** . On hitting this API, redis invalidates all of it's keys.\n\n**Use the following credentials to login as Admin -**\n\nemail : \"[admin@gmail.com](https://mailto:admin@gmail.com)\"\n\npassword : \"admin123\"\n\nWe use form-data to send JSON file of chapters under 'file' field."
+		},
+		{
+			"name": "get chapters",
+			"item": [
+				{
+					"name": "get chapters using filters",
+					"item": [
+						{
+							"name": "filterByClass",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?class=Class 11",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "class",
+											"value": "Class 11"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterBySubject",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?subject=PhysiCS",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "subject",
+											"value": "PhysiCS"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterByUnit",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?unit=Mechanics 1",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "unit",
+											"value": "Mechanics 1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterByStatus",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?status=CompleteD",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "CompleteD"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterByWeakChapter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?weakChapters=false",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "weakChapters",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "multipleFilters",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?class=Class 11&subject=Physics&status=Not Started",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "class",
+											"value": "Class 11"
+										},
+										{
+											"key": "subject",
+											"value": "Physics"
+										},
+										{
+											"key": "status",
+											"value": "Not Started"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterByPaginationOnly",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?page=2&limit=7",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "limit",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterByFieldsAndPagination",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters?subject=Physics&class=Class 11&page=1&limit=10",
+									"protocol": "https",
+									"host": [
+										"sleepy-sloth-backend-2217",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"chapters"
+									],
+									"query": [
+										{
+											"key": "subject",
+											"value": "Physics"
+										},
+										{
+											"key": "class",
+											"value": "Class 11"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "This folder shows the requests with one filter, multiple filters, pagination and both filter and pagination."
+				},
+				{
+					"name": "getAllChapters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getChapterByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters/68413b5535bf7e597d5ea823",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters",
+								"68413b5535bf7e597d5ea823"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder consists of various requests that aim to get a list of chapters based on filtering, pagination or both.\n\n##### This uses filter based keys for redis and first checks if data is cached for same filter or not.\n\nThis uses **GET /api/v1/chapters** endpoint.  \nThis is protected route so it requires **USER TO BE LOGGED IN.**"
+		},
+		{
+			"name": "Rate limit",
+			"item": [
+				{
+					"name": "getAllChapters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getChapterByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters/68413b5535bf7e597d5ea823",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters",
+								"68413b5535bf7e597d5ea823"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadChapters",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1f042356-0928-43c0-a574-108af024a40c"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sleepy-sloth-backend-2217.onrender.com/api/v1/chapters",
+							"protocol": "https",
+							"host": [
+								"sleepy-sloth-backend-2217",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder consists of requests for the testing of rate limit.\n\nThe routes **/api/v1/chapters** (both POST and GET) have a **rate limit of 30 requests per IP per minute**.  \nSo if we trigger any of the rate limited endpoint for more than thirty times in a minute, then we will be restricted for a minute to send requests."
+		}
+	]
+}
