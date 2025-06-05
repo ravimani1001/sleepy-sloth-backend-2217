@@ -173,6 +173,9 @@ REDIS_URL=your_redis_url
 
 Sample files required for testing the APIs are available here  :  [View Sample Files](https://github.com/ravimani1001/sleepy-sloth-backend-2217/tree/main/test)
 
+
+Get the Postman Collection Extract  :  [Here](https://github.com/ravimani1001/sleepy-sloth-backend-2217/blob/main/postman/Chapter%20performance%20dashboard%20API.postman_collection.json)
+
 - Public and documented  
 - Includes:
   - Auth routes  
