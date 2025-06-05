@@ -168,12 +168,20 @@ REDIS_URL=your_redis_url
 
 ## 🧪 Postman Collection
 
+[Go to Postman Collection](https://justme-6811.postman.co/workspace/JustMe-Workspace~e4a6a401-1c7d-4d9d-90f9-d915a0567b59/collection/37304514-57052357-8267-4ed9-856a-7abd7bcd1aac?action=share&creator=37304514)
+
+
+Sample files required for testing the APIs are available here  :  [View Sample Files](https://github.com/ravimani1001/sleepy-sloth-backend-2217/tree/main/test)
+
 - Public and documented  
 - Includes:
   - Auth routes  
   - File upload  
   - Chapter queries with filters & pagination  
-  - Rate-limit test cases  
+  - Rate-limit test cases 
+
+  
+
 
 ---
 
