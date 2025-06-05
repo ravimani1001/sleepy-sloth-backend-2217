@@ -4,12 +4,14 @@ require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
+const cors = require("cors");
 const authRoutes = require("./routes/auth.routes");
 const chapterRoutes = require("./routes/chapter.routes");
 const rateLimiter = require("./middleware/rateLimiter.middleware");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
