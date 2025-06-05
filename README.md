@@ -2,6 +2,13 @@
 
 A powerful and modular backend API built using **Node.js**, **Express**, **MongoDB**, and **Redis**. It allows secure management of chapter performance data including user authentication, admin-based chapter uploads, advanced filtering, Redis caching, and request rate limiting.
 
+
+## 🌐 Live API
+
+The live API is deployed and available here:  
+🔗 [https://sleepy-sloth-backend-2217.onrender.com/api/v1](https://sleepy-sloth-backend-2217.onrender.com/api/v1/)
+
+
 ---
 
 ## 🚀 Features
@@ -49,8 +56,8 @@ A powerful and modular backend API built using **Node.js**, **Express**, **Mongo
 ### Chapter Routes (`/api/v1/chapters`)
 
 - `POST /` – Upload JSON file (admin only)  
-- `GET /` – Get all chapters (with query, pagination, caching)  
-- `GET /:id` – Get single chapter by ID  
+- `GET /` – Get all chapters with query, pagination, caching (protected route - needs login) 
+- `GET /:id` – Get single chapter by ID (protected route - needs login) 
 
 ---
 
@@ -143,7 +150,7 @@ Upload a `.json` file containing an array of chapters:
 ## 📂 Environment Variables (`.env`)
 
 ```
-PORT=5000
+PORT=port number
 MONGO_URI=your_mongodb_uri
 DATABASE = your_database_name
 JWT_SECRET=your_jwt_secret
@@ -154,8 +161,7 @@ REDIS_URL=your_redis_url
 
 ## 📤 Deployment
 
-- Deployed on: `Render`, `Railway`, or similar  
-- Can be deployed on **AWS EC2** (bonus) with **GitHub Actions** CI  
+- Deployed on: `Render` 
 - Auto-deploy via connected GitHub repository  
 
 ---
